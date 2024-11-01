@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "49299794520",
+    "project_id": "foodorderingapps-835d9",
+    "storage_bucket": "foodorderingapps-835d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49299794520:android:d911e6476ae2381b4c382d",
+        "android_client_info": {
+          "package_name": "com.shakil.foodorderingapps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaylUiA2mAK6dxCuNB0pbevCXrSuSMZvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
