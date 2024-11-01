@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Details/details_screen.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -15,70 +17,227 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(top: 50, right: 20, left: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Hello Shakil,",
-                  style: TextStyle(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Hello Shakil,",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins'),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
                       color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Poppins'),
-                ),
-                Container(
-                  padding: EdgeInsets.all(3),
-                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(
+                      Icons.shopping_cart,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Delicious Food",
+                style: TextStyle(
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Icon(
-                    Icons.shopping_cart,
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Delicious Food",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Poppins'),
-            ),
-            Text(
-              "Discover and  Get Grate Food",
-              style: TextStyle(
-                  color: Colors.black45,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Poppins'),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            showItem(),
-            SizedBox(height: 20,),
-            Row(
-              children: [
-                Container(
-                  child: Column(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins'),
+              ),
+              Text(
+                "Discover and  Get Grate Food",
+                style: TextStyle(
+                    color: Colors.black45,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Poppins'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              showItem(),
+              SizedBox(height: 20,),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+          
+                       GestureDetector(
+                         onTap: (){
+                           Navigator.push(context, MaterialPageRoute(builder: (_)=>DetailsScreen()));
+                           
+                         },
+                         child: Material(
+                          elevation: 5,
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: EdgeInsets.all(14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset("assets/images/salad2.png",height: 150,width: 150,fit: BoxFit.cover,),
+                                Text("Veggle Taco Hash", style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins'),),
+                                Text("Free and Health", style: TextStyle(
+                                    color: Colors.black45,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Poppins'),),
+                                Text("\$25", style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins'),),
+                         
+                         
+                              ],
+                            ),
+                          ),
+                                             ),
+                       ),
+                    SizedBox(width: 14,),
+                    Material(
+                      elevation: 5,
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        padding: EdgeInsets.all(14),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset("assets/images/salad2.png",height: 150,width: 150,fit: BoxFit.cover,),
+                            Text("Mix  Veg Salad", style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),),
+                            Text("Spicy With online", style: TextStyle(
+                                color: Colors.black45,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins'),),
+                            Text("\$28", style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),),
+          
+          
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 14,),
+          
+                  ],
+                ),
+              ),
+              SizedBox(height: 20,),
+          
+              Material(
+                elevation: 5,
+                borderRadius: BorderRadius.circular(8),
+                child: Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Image.asset("assets/images/salad2.png",height: 120,width: 120,fit: BoxFit.cover,),
+                      SizedBox(width: 15,),
+                      Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width /2,
+                            child: Text("Learn the Food Names Salad.", style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width /2,
+                            child: Text("Honey Good  cheese.", style: TextStyle(
+                                color: Colors.black45,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins'),),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width /2,
+                            child: Text("\$28", style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins'),),
+                          ),
+                        ],
+                      )
+                
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20,),
+
+              Material(
+                elevation: 5,
+                borderRadius: BorderRadius.circular(8),
+                child: Container(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset("assets/images/salad2.png",height: 120,width: 120,fit: BoxFit.cover,),
+                      SizedBox(width: 15,),
+                      Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width /2,
+                            child: Text("Learn the Food Names Salad.", style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width /2,
+                            child: Text("Honey Good  cheese.", style: TextStyle(
+                                color: Colors.black45,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins'),),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width /2,
+                            child: Text("\$28", style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins'),),
+                          ),
+                        ],
+                      )
 
                     ],
                   ),
-                )
-              ],
-            )
-
-          ],
+                ),
+              ),
+              SizedBox(height: 20,),
+          
+            ],
+          ),
         ),
       ),
     );
