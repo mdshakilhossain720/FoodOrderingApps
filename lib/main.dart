@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodorderingapps/pages/HomePage/home_page.dart';
 
 import 'firebase_options.dart';
+import 'pages/loginpage/login_page.dart';
 import 'pages/nav/bottom.dart';
 
 Future<void> main() async {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BottomNav(),
+      home: LogIn(),
     );
   }
 }

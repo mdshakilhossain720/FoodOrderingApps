@@ -1,44 +1,70 @@
 
 import 'package:flutter/material.dart';
-import 'package:foodorderingapps/pages/nav/bottom.dart';
-
-import '../ForgetPassword/forget_password.dart';
-import '../SignUp/sign_up.dart';
+import 'package:foodorderingapps/pages/loginpage/login_page.dart';
 
 
-class LogIn extends StatefulWidget {
-  const LogIn({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<LogIn> createState() => _LogInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LogInState extends State<LogIn> {
-  String email = "", password = "";
+class _SignUpState extends State<SignUp> {
+  String email = "", password = "", name = "";
 
-  final _formkey= GlobalKey<FormState>();
+  TextEditingController namecontroller = new TextEditingController();
 
-  TextEditingController useremailcontroller = new TextEditingController();
-  TextEditingController userpasswordcontroller = new TextEditingController();
+  TextEditingController passwordcontroller = new TextEditingController();
 
-  // userLogin() async {
-  //   try {
-  //     await FirebaseAuth.instance
-  //         .signInWithEmailAndPassword(email: email, password: password);
-  //     Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNav()));
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == 'user-not-found') {
-  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  TextEditingController mailcontroller = new TextEditingController();
+
+  final _formkey = GlobalKey<FormState>();
+
+  // registration() async {
+  //   if (password != null) {
+  //     try {
+  //       UserCredential userCredential = await FirebaseAuth.instance
+  //           .createUserWithEmailAndPassword(email: email, password: password);
+  //
+  //       ScaffoldMessenger.of(context).showSnackBar((SnackBar(
+  //           backgroundColor: Colors.redAccent,
   //           content: Text(
-  //             "No User Found for that Email",
-  //             style: TextStyle(fontSize: 18.0, color: Colors.black),
-  //           )));
-  //     }else if(e.code=='wrong-password'){
-  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //           content: Text(
-  //             "Wrong Password Provided by User",
-  //             style: TextStyle(fontSize: 18.0, color: Colors.black),
-  //           )));
+  //             "Registered Successfully",
+  //             style: TextStyle(fontSize: 20.0),
+  //           ))));
+  //       String Id = randomAlphaNumeric(10);
+  //       Map<String, dynamic> addUserInfo = {
+  //         "Name": namecontroller.text,
+  //         "Email": mailcontroller.text,
+  //         "Wallet": "0",
+  //         "Id": Id,
+  //       };
+  //       await DatabaseMethods().addUserDetail(addUserInfo, Id);
+  //       await SharedPreferenceHelper().saveUserName(namecontroller.text);
+  //       await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);
+  //       await SharedPreferenceHelper().saveUserWallet('0');
+  //       await SharedPreferenceHelper().saveUserId(Id);
+  //
+  //       // ignore: use_build_context_synchronously
+  //       Navigator.pushReplacement(
+  //           context, MaterialPageRoute(builder: (context) => BottomNav()));
+  //     } on FirebaseException catch (e) {
+  //       if (e.code == 'weak-password') {
+  //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //             backgroundColor: Colors.orangeAccent,
+  //             content: Text(
+  //               "Password Provided is too Weak",
+  //               style: TextStyle(fontSize: 18.0),
+  //             )));
+  //       } else if (e.code == "email-already-in-use") {
+  //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //             backgroundColor: Colors.orangeAccent,
+  //             content: Text(
+  //               "Account Already exsists",
+  //               style: TextStyle(fontSize: 18.0),
+  //             )));
+  //       }
   //     }
   //   }
   // }
@@ -92,7 +118,7 @@ class _LogInState extends State<LogIn> {
                     child: Container(
                       padding: EdgeInsets.only(left: 20.0, right: 20.0),
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 2,
+                      height: MediaQuery.of(context).size.height / 1.8,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
@@ -104,21 +130,41 @@ class _LogInState extends State<LogIn> {
                               height: 30.0,
                             ),
                             Text(
-                              "Login",
+                              "Sign up",
                               style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black45,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
                                   fontFamily: 'Poppins'),
                             ),
                             SizedBox(
                               height: 30.0,
                             ),
                             TextFormField(
-                              controller: useremailcontroller,
-                              validator: (value){
-                                if(value==null|| value.isEmpty){
-                                  return 'Please Enter Email';
+                              controller: namecontroller,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter Name';
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                  hintText: 'Name',
+                                  hintStyle:TextStyle(
+                                  color: Colors.black45,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Poppins'),
+                                  prefixIcon: Icon(Icons.person_outlined)),
+                            ),
+                            SizedBox(
+                              height: 30.0,
+                            ),
+                            TextFormField(
+                              controller: mailcontroller,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter E-mail';
                                 }
                                 return null;
                               },
@@ -135,9 +181,9 @@ class _LogInState extends State<LogIn> {
                               height: 30.0,
                             ),
                             TextFormField(
-                              controller:userpasswordcontroller,
-                              validator: (value){
-                                if(value==null|| value.isEmpty){
+                              controller: passwordcontroller,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
                                   return 'Please Enter Password';
                                 }
                                 return null;
@@ -153,36 +199,18 @@ class _LogInState extends State<LogIn> {
                                   prefixIcon: Icon(Icons.password_outlined)),
                             ),
                             SizedBox(
-                              height: 20.0,
-                            ),
-                            GestureDetector(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgotPassword()));
-                              },
-                              child: Container(
-                                  alignment: Alignment.topRight,
-                                  child: Text(
-                                    "Forgot Password?",
-                                      style: TextStyle(
-                                      color: Colors.black45,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Poppins'),
-                                  )),
-                            ),
-                            SizedBox(
                               height: 80.0,
                             ),
                             GestureDetector(
-                              onTap: (){
-                                if(_formkey.currentState!.validate()){
+                              onTap: () async {
+                                if (_formkey.currentState!.validate()) {
                                   setState(() {
-                                    email= useremailcontroller.text;
-                                    password= userpasswordcontroller.text;
+                                    email = mailcontroller.text;
+                                    name = namecontroller.text;
+                                    password = passwordcontroller.text;
                                   });
                                 }
-                                Navigator.push(context, MaterialPageRoute(builder: (_)=>BottomNav()));
-                              //  userLogin();
+                               // registration();
                               },
                               child: Material(
                                 elevation: 5.0,
@@ -195,7 +223,7 @@ class _LogInState extends State<LogIn> {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Center(
                                       child: Text(
-                                        "LOGIN",
+                                        "SIGN UP",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 18.0,
@@ -215,10 +243,11 @@ class _LogInState extends State<LogIn> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        Navigator.push(context,MaterialPageRoute(builder: (context) => SignUp()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => LogIn()));
                       },
                       child: Text(
-                        "Don't have an account? Sign up",
+                        "Already have an account? Login",
                         style: TextStyle(
                             color: Colors.black45,
                             fontSize: 18,
