@@ -1,5 +1,8 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../SignUp/sign_up.dart';
 
 
 class ForgotPassword extends StatefulWidget {
@@ -16,24 +19,24 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   final _formkey = GlobalKey<FormState>();
 
-  // resetPassword() async {
-  //   try {
-  //     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //         content: Text(
-  //           "Password Reset Email has been sent !",
-  //           style: TextStyle(fontSize: 18.0),
-  //         )));
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == "user-not-found") {
-  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //           content: Text(
-  //             "No user found for that email.",
-  //             style: TextStyle(fontSize: 18.0),
-  //           )));
-  //     }
-  //   }
-  // }
+  resetPassword() async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            "Password Reset Email has been sent !",
+            style: TextStyle(fontSize: 18.0),
+          )));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+              "No user found for that email.",
+              style: TextStyle(fontSize: 18.0),
+            )));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +111,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 setState(() {
                                   email= mailcontroller.text;
                                 });
-                                //resetPassword();
+                                resetPassword();
                               }
                             },
                             child: Container(
@@ -143,10 +146,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) => SignUp()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SignUp()));
                                 },
                                 child: Text(
                                   "Create",
