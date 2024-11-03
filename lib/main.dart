@@ -5,6 +5,7 @@ import 'package:foodorderingapps/pages/HomePage/home_page.dart';
 import 'firebase_options.dart';
 import 'pages/loginpage/login_page.dart';
 import 'pages/nav/bottom.dart';
+import 'pages/onboardingPage/onboarding_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LogIn(),
+      home:Onboard(),
     );
   }
 }

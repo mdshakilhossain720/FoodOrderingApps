@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset("assets/images/salad2.png",height: 150,width: 150,fit: BoxFit.cover,),
+                            Image.asset("assets/images/salad3.png",height: 150,width: 150,fit: BoxFit.cover,),
                             Text("Mix  Veg Salad", style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
@@ -199,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset("assets/images/salad2.png",height: 120,width: 120,fit: BoxFit.cover,),
+                      Image.asset("assets/images/salad3.png",height: 120,width: 120,fit: BoxFit.cover,),
                       SizedBox(width: 15,),
                       Column(
                         children: [

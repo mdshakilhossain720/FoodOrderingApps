@@ -199,7 +199,7 @@ class _SignUpState extends State<SignUp> {
                                   prefixIcon: Icon(Icons.password_outlined)),
                             ),
                             SizedBox(
-                              height: 80.0,
+                              height: 30.0,
                             ),
                             GestureDetector(
                               onTap: () async {
