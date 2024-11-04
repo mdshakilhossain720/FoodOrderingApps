@@ -1,5 +1,11 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+
+import '../../widgets/app_const.dart';
+import 'package:http/http.dart' as http;
 
 
 class WalletPage extends StatefulWidget {
@@ -12,27 +18,27 @@ class WalletPage extends StatefulWidget {
 class _WalletPageState extends State<WalletPage> {
   // String? wallet, id;
   // int? add;
-
-  TextEditingController amountcontroller = new TextEditingController();
-
+  //
+  // TextEditingController amountcontroller = new TextEditingController();
+  //
   // getthesharedpref() async {
   //   wallet = await SharedPreferenceHelper().getUserWallet();
   //   id = await SharedPreferenceHelper().getUserId();
   //   setState(() {});
   // }
-
+  //
   // ontheload() async {
   //   await getthesharedpref();
   //   setState(() {});
   // }
-
+  //
   // @override
   // void initState() {
   //   ontheload();
   //   super.initState();
   // }
-
-  // Map<String, dynamic>? paymentIntent;
+  //
+  //  Map<String, dynamic>? paymentIntent;
 
   @override
   Widget build(BuildContext context) {
@@ -251,7 +257,7 @@ class _WalletPageState extends State<WalletPage> {
   //     print('exception:$e$s');
   //   }
   // }
-
+  //
   // displayPaymentSheet(String amount) async {
   //   try {
   //     await Stripe.instance.presentPaymentSheet().then((value) async {
@@ -295,7 +301,7 @@ class _WalletPageState extends State<WalletPage> {
   //     print('$e');
   //   }
   // }
-
+  //
   //  Future<Map<String, dynamic>>
   // createPaymentIntent(String amount, String currency) async {
   //   try {
@@ -308,7 +314,7 @@ class _WalletPageState extends State<WalletPage> {
   //     var response = await http.post(
   //       Uri.parse('https://api.stripe.com/v1/payment_intents'),
   //       headers: {
-  //         'Authorization': 'Bearer $secretKey',
+  //         'Authorization': 'Bearer $ScreetKey',
   //         'Content-Type': 'application/x-www-form-urlencoded'
   //       },
   //       body: body,
@@ -321,13 +327,13 @@ class _WalletPageState extends State<WalletPage> {
   //     print('err charging user: ${err.toString()}');
   //   }
   // }
-
+  //
   // calculateAmount(String amount) {
   //   final calculatedAmout = (int.parse(amount)) * 100;
   //
   //   return calculatedAmout.toString();
   // }
-
+  //
   // Future openEdit() => showDialog(
   //     context: context,
   //     builder: (context) => AlertDialog(
